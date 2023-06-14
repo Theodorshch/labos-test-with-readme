@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { Store } from "@ngrx/store";
-import { selectAllFavorites } from "../../../store/favorites/favorites.selectors";
+import { selectAllFavoritesExpandedFiltered } from "../../../store/favorites/favorites.selectors";
 import { removeFromFavorites } from "../../../store/favorites/favorites.actions";
+import { FormControl } from "@angular/forms";
+import { startWith, switchMap } from "rxjs/operators";
 
 @Component({
   selector: "st-favorites",
@@ -10,7 +12,11 @@ import { removeFromFavorites } from "../../../store/favorites/favorites.actions"
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FavoritesComponent {
-  favorites$ = this.store.select(selectAllFavorites);
+  filterControl = new FormControl("");
+  favorites$ = this.filterControl.valueChanges.pipe(
+    startWith(""),
+    switchMap(filter => this.store.select(selectAllFavoritesExpandedFiltered, {filter}))
+  );
 
   constructor(private store: Store) {
   }

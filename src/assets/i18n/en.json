@@ -39,5 +39,7 @@
   "stms.orders.patient-full-name": "Patient Full Name",
   "stms.orders.creator-name": "Creator Name",
 
-  "stms.favorites.title": "Favorites"
+  "stms.favorites.title": "Favorites",
+  "stms.favorites.patient-first-name": "Patient First Name",
+  "stms.favorites.order-name": "Order Name"
 }

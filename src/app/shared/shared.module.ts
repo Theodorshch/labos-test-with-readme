@@ -51,6 +51,7 @@ import { BigInputComponent } from "./components/big-input/big-input/big-input.co
 import { BigInputActionComponent } from "./components/big-input/big-input-action/big-input-action.component";
 import { RtlSupportDirective } from "./directives/rtl-support/rtl-support.directive";
 import { MemoMethodPipe } from './pipes/memo-method.pipe';
+import { FullYearsPipe } from './pipes/full-years.pipe';
 
 @NgModule({
   imports: [
@@ -81,7 +82,8 @@ import { MemoMethodPipe } from './pipes/memo-method.pipe';
     BigInputComponent,
     BigInputActionComponent,
     RtlSupportDirective,
-    MemoMethodPipe
+    MemoMethodPipe,
+    FullYearsPipe
   ],
   exports: [
     CommonModule,
@@ -115,6 +117,7 @@ import { MemoMethodPipe } from './pipes/memo-method.pipe';
     BigInputActionComponent,
     RtlSupportDirective,
     MemoMethodPipe,
+    FullYearsPipe,
   ],
 })
 export class SharedModule {

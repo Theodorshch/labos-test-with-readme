@@ -1,6 +1,6 @@
 import { createEntityAdapter, EntityState } from "@ngrx/entity";
 
-interface FavoriteItem {
+export interface FavoriteItem {
   patientId?: string;
   orderId?: string;
 }

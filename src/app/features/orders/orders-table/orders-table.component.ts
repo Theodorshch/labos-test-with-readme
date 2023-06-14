@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 import { Order } from "../../../shared/models/order.model";
 import { Store } from "@ngrx/store";
 import { isOrderFavorite } from "../../../store/favorites/favorites.selectors";
-import { tap } from "rxjs/operators";
 import { addOrderToFavorites, removeFromFavorites } from "../../../store/favorites/favorites.actions";
 
 @Component({
@@ -18,9 +17,7 @@ export class OrdersTableComponent {
   }
 
   isFavorite(orderId: string) {
-    return this.store.select(isOrderFavorite, {orderId}).pipe(
-      tap(isFavorite => console.log("isFavorite", isFavorite)),
-    );
+    return this.store.select(isOrderFavorite, {orderId});
   }
 
   listenAddToFavoriteClick(event: Event) {
