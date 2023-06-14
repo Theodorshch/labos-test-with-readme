@@ -1,0 +1,43 @@
+<div class="data-table">
+  <table mat-table [dataSource]="patients" (click)="listenAddToFavoriteClick($event)">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let patient">{{ patient.defaultId }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef>{{ 'stms.patients.age' | translate }}</th>
+      <td mat-cell *matCellDef="let patient">{{ patient.age }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fullName">
+      <th mat-header-cell *matHeaderCellDef>{{ 'stms.patients.full-name' | translate }}</th>
+      <td mat-cell *matCellDef="let patient">{{ patient.fullName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="sex">
+      <th mat-header-cell *matHeaderCellDef>{{ 'stms.patients.sex' | translate }}</th>
+      <td mat-cell *matCellDef="let patient">{{ patient.sex.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="addToFavorites">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let patient">
+        <ng-container *ngIf="{value: isFavorite | memoMethod: this: patient.defaultId | async} as isFavorite">
+          <button mat-mini-fab
+                  [attr.data-item-id]="patient.defaultId"
+                  [attr.data-is-favorite]="isFavorite.value"
+          >
+            <span *ngIf="isFavorite.value; else notFavorite">&#9733;</span>
+            <ng-template #notFavorite>
+              <span>&#9734;</span>
+            </ng-template>
+          </button>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['id', 'age', 'fullName', 'sex', 'addToFavorites']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id', 'age', 'fullName', 'sex', 'addToFavorites']"></tr>
+  </table>
+</div>

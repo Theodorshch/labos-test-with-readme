@@ -50,6 +50,7 @@ import { faMediumM, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { BigInputComponent } from "./components/big-input/big-input/big-input.component";
 import { BigInputActionComponent } from "./components/big-input/big-input-action/big-input-action.component";
 import { RtlSupportDirective } from "./directives/rtl-support/rtl-support.directive";
+import { MemoMethodPipe } from './pipes/memo-method.pipe';
 
 @NgModule({
   imports: [
@@ -79,7 +80,8 @@ import { RtlSupportDirective } from "./directives/rtl-support/rtl-support.direct
   declarations: [
     BigInputComponent,
     BigInputActionComponent,
-    RtlSupportDirective
+    RtlSupportDirective,
+    MemoMethodPipe
   ],
   exports: [
     CommonModule,
@@ -111,8 +113,9 @@ import { RtlSupportDirective } from "./directives/rtl-support/rtl-support.direct
 
     BigInputComponent,
     BigInputActionComponent,
-    RtlSupportDirective
-  ]
+    RtlSupportDirective,
+    MemoMethodPipe,
+  ],
 })
 export class SharedModule {
   constructor(faIconLibrary: FaIconLibrary) {

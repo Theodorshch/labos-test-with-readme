@@ -10,17 +10,22 @@ const routes: Routes = [
   {
     path: "patients",
     loadChildren: () =>
-      import("./features/patients/patients.module").then(m => m.PatientsModule)
+        import("./features/patients/patients.module").then(m => m.PatientsModule)
   },
   {
     path: "orders",
     loadChildren: () =>
-      import("./features/orders/orders.module").then(m => m.OrdersModule)
+        import("./features/orders/orders.module").then(m => m.OrdersModule)
+  },
+  {
+    path: "favorites",
+    loadChildren: () =>
+        import("./features/favorites/favorites.module").then(m => m.FavoritesModule)
   },
   {
     path: "settings",
     loadChildren: () =>
-      import("./features/settings/settings.module").then(m => m.SettingsModule)
+        import("./features/settings/settings.module").then(m => m.SettingsModule)
   },
   {
     path: "**",
